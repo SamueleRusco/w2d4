@@ -124,15 +124,52 @@ femaleCharacters = [];
 
 for (let i = 0; i < starWarsCharacters.length; i++) {
   if (starWarsCharacters[i].gender === "female") {
-    femaleCharacters.push(starWarsCharacters[i]);
+    let tmpFemale = {
+      name: starWarsCharacters[i].name,
+      hair_color: starWarsCharacters[i].hair_color,
+      eye_color: starWarsCharacters[i].eye_color,
+    };
+    femaleCharacters.push(tmpFemale);
   }
 }
-console.log(femaleCharacters);
+//console.log(femaleCharacters);
 /* ESERCIZIO 4
   Crea un oggetto "eyeColor" che abbia come proprietà: blue, yellow, brown, red, blue-gray.
   ognuna di queste proprietà contiene un array vuoto
 */
 
+let eyeColor = {
+  blue: [],
+  yellow: [],
+  brown: [],
+  red: [],
+  blueGray: [],
+};
+for (let i = 0; i < starWarsCharacters.length; i++) {
+  switch (starWarsCharacters[i].eye_color) {
+    case "blue":
+      eyeColor.blue.push(starWarsCharacters[i]);
+      break;
+
+    case "yellow":
+      eyeColor.yellow.push(starWarsCharacters[i]);
+      break;
+
+    case "brown":
+      eyeColor.brown.push(starWarsCharacters[i]);
+      break;
+
+    case "red":
+      eyeColor.red.push(starWarsCharacters[i]);
+      break;
+
+    case "blue-gray":
+      eyeColor.blueGray.push(starWarsCharacters[i]);
+      break;
+  }
+}
+//console.log("red", eyeColor.red);
+//console.log("blueGray", eyeColor.blueGray);
 /* ESERCIZIO 5
   Inserisci l'oggetto dei personaggi in "starWarsCharacters" nell'array corrispondente al colore dei loro occhi nell'oggetto "eyeColor" precedentemente creato.
   Utilizza uno switch statement per determinare in quale proprietà inserire il personaggio
@@ -141,6 +178,14 @@ console.log(femaleCharacters);
 /* ESERCIZIO 6
   Usa un while loop per calcolare la massa totale dell'equipaggio
 */
+let pesototale = 0;
+let i = 0;
+while (i < starWarsCharacters.length) {
+  pesototale = pesototale + parseInt(starWarsCharacters[i].mass);
+  i++;
+}
+console.log("esercizio 6:", pesototale);
+//finche il contatore è meno di 10 fai=
 
 /* ESERCIZIO 7
 
@@ -154,13 +199,40 @@ Se la massa è superiore a 900 stampa in console: "Critical Load: Over 900",
 Se la massa è superiore a 1000 stampa in console: "DANGER! OVERLOAD ALERT: Jump ship now!"
 
 Una volta fatto, modifica la massa di qualche elemento dell'equipaggio e vedi se riesci ad ottenere un messaggio diverso.
+
 */
+
+switch (true) {
+  case pesototale < 500:
+    console.log("ship is under loaded");
+    break;
+  case pesototale == 500:
+    console.log("Ship is half loaded");
+    break;
+  case pesototale > 700 && pesototale <= 900:
+    console.log("Warning: Load is over 700");
+    break;
+  case pesototale > 900 && pesototale <= 1000:
+    console.log("Critical Load: Over 900");
+    break;
+  case pesototale > 1000:
+    console.log("DANGER! OVERLOAD ALERT: Jump ship now!");
+    break;
+
+  default:
+    console.log("ship is loaded correctly");
+}
 
 /* ESERCIZIO 8
 
 Usa un for loop per cambiare il valore della proprietà "gender" di alcuni personaggi dal valore "n/a" a "robot" (Tip: puoi creare un nuovo array, o tentare la riassegnazione del valore corrispondente)
 */
-
+for (i = 0; i < starWarsCharacters.length; i++) {
+  if (starWarsCharacters[i].gender == "n/a") {
+    starWarsCharacters[i].gender = "robot";
+  }
+}
+console.log(starWarsCharacters);
 /* EXTRA ESERCIZIO 9
 
 Utilizzando gli elementi presenti nell'array "femaleCharacters" rimuovi dall'array "characters" le stringhe corrispondenti a personaggi con lo stesso nome"
@@ -168,9 +240,17 @@ Usa uno più for loop per raggiungere il risultato
 
 (tip: cerca un metodo degli array per rimuovere un elemento)
 
+
 Una volta fatto, crea un console.log() per controllare la proprietà length di "characters" prima e dopo l'operazione
 */
 
+/*console.log("chara before", starWarsCharacters.length);
+for (let i = 0; i <starWarsCharacters.length; i++)
+for (let j=0; j < femaleCharacters.length; j++)
+
+{
+  if (femaleCharacters[j].name === starWarsCharacters[i].name)
+}
 /* EXTRA ESERCIZIO 10
 
 Crea una funzionalità che prenda un elemento casuale dall'array "starWarsCharacters" e ne stampi in console le proprietà in modo discorsivo
